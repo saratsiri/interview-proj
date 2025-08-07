@@ -92,11 +92,39 @@ jenosize-trend-generator/
 
 ## 🛠️ Technology Stack
 
-- **Backend**: FastAPI, Python 3.9+
-- **AI/ML**: Transformers, PyTorch (optional)
+- **Backend**: FastAPI, Python 3.12+
+- **AI/ML**: OpenAI GPT-3.5/GPT-4, Hugging Face Transformers, PyTorch
 - **Frontend Demo**: Streamlit
 - **Data**: Pandas, JSON
+- **Security**: Custom middleware, rate limiting, input sanitization
 - **Deployment**: Docker, Uvicorn
+
+## 🤖 Model Selection Rationale
+
+We selected OpenAI GPT and Hugging Face Transformers for the following strategic reasons:
+
+### Primary Choice: OpenAI GPT-3.5-turbo/GPT-4
+1. **High-Quality Business Content Generation**: Demonstrated excellence in producing professional, strategic business content that aligns with Jenosize's editorial standards
+2. **Advanced Language Understanding**: Superior comprehension of business terminology, strategic concepts, and executive-level communication
+3. **Tone Consistency**: Maintains professional, forward-thinking tone throughout long-form articles
+4. **Proven Performance**: Extensive validation in business content generation with consistent quality
+5. **Cost-Effective Scaling**: Optimal balance of content quality and operational costs
+6. **Multi-language Support**: Capable of handling Thai market insights and regional business context
+
+### Secondary Choice: Hugging Face Transformers  
+1. **Local Processing Control**: On-premises generation for sensitive content and cost management
+2. **Customization Flexibility**: Full control over model parameters and fine-tuning processes
+3. **Zero Per-Request Costs**: Economical for high-volume content generation
+4. **Reliability Backup**: Ensures service continuity independent of external API availability
+5. **Experimentation Platform**: Enables testing of specialized models and fine-tuning approaches
+
+### Smart Fallback Architecture
+The system implements intelligent model selection:
+- **OpenAI API**: Primary choice for highest quality content
+- **Local HuggingFace**: Fallback for cost control and reliability
+- **Professional Mock**: Ultimate fallback ensuring 100% uptime
+
+This multi-provider approach ensures optimal content quality while maintaining cost control and service reliability, perfectly aligning with Jenosize's requirements for professional business intelligence content generation.
 
 ## 📝 API Usage Examples
 

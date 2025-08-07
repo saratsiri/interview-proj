@@ -32,6 +32,7 @@ class ArticleMetadata(BaseModel):
     word_count: int
     model: str
     generated_at: str
+    generation_time_seconds: Optional[float] = None
 
 class ArticleResponse(BaseModel):
     """Response schema for article generation"""
