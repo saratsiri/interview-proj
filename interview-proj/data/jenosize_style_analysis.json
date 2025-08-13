@@ -1,0 +1,37 @@
+{
+  "total_articles": 9,
+  "categories": {
+    "Marketing": 1,
+    "Futurist": 3,
+    "Experience": 1,
+    "Consumer Insights": 1,
+    "Technology": 1,
+    "Utility & Sustainability": 2
+  },
+  "avg_word_count": 884,
+  "common_phrases": [
+    "in today (3x)",
+    "digital era (2x)",
+    "consumer (23x)",
+    "brand (101x)",
+    "strategy (14x)",
+    "technology (35x)",
+    "experience (58x)",
+    "future (13x)",
+    "innovation (13x)",
+    "market (82x)",
+    "business (65x)",
+    "customer (64x)",
+    "digital transformation (5x)",
+    "ai (220x)",
+    "data (79x)"
+  ],
+  "writing_patterns": [
+    "Opens with current context ('In today's...')",
+    "Forward-looking perspective with trend analysis",
+    "Business strategy focus",
+    "Customer/consumer-centric approach"
+  ],
+  "structural_elements": [],
+  "word_count_range": "755-1145"
+}

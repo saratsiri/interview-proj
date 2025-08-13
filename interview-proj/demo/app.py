@@ -45,7 +45,7 @@ st.markdown("Generate high-quality business trend articles powered by AI")
 st.sidebar.header("⚙️ Configuration")
 api_url = st.sidebar.text_input(
     "API Endpoint",
-    value="http://localhost:8000",
+    value="http://localhost:8008",
     help="Enter the API endpoint URL"
 )
 
@@ -74,8 +74,7 @@ with col1:
     
     category = st.selectbox(
         "Category *",
-        ["Technology", "Business Strategy", "Digital Transformation", 
-         "Innovation", "Sustainability", "Marketing", "Finance"]
+        ["Technology", "Business", "Healthcare", "Finance", "Marketing", "Science", "Education"]
     )
     
     keywords_input = st.text_area(
@@ -139,19 +138,21 @@ with col2:
                         # Metadata cards
                         meta_cols = st.columns(4)
                         with meta_cols[0]:
-                            st.metric("📂 Category", result['metadata']['category'])
+                            st.markdown(f"**📂 Category:** {result['metadata']['category']}")
                         with meta_cols[1]:
-                            st.metric("📊 Word Count", result['metadata']['word_count'])
+                            st.markdown(f"**📊 Words:** {result['metadata']['word_count']}")
                         with meta_cols[2]:
-                            st.metric("🤖 Model", result['metadata']['model'])
+                            st.markdown(f"**🤖 Model:** {result['metadata']['model'][:20]}...")
                         with meta_cols[3]:
-                            st.metric("⏰ Generated", datetime.now().strftime("%H:%M:%S"))
+                            st.markdown(f"**⏰ Generated:** {datetime.now().strftime('%H:%M:%S')}")
                         
                         st.markdown("---")
                         
-                        # Content
+                        # Content (fix newline display)
                         st.markdown('<div class="generated-content">', unsafe_allow_html=True)
-                        st.markdown(result['content'])
+                        # Replace literal \n\n with actual line breaks
+                        clean_content = result['content'].replace('\\n\\n', '\n\n').replace('\\n', '\n')
+                        st.markdown(clean_content)
                         st.markdown('</div>', unsafe_allow_html=True)
                         
                         # Additional info
