@@ -145,7 +145,8 @@ jenosize-trend-generator/
 
 ### Data & Storage
 - **JSON**: Article database and configuration storage
-- **Pickle**: Optimized embedding storage for fast retrieval
+- **Pickle**: Optimized embedding storage for fast retrieval (current solution)
+- **Future**: Qdrant vector database for scalable similarity search at larger scale
 
 ### Security & Production
 - **Custom Middleware**: Rate limiting, input sanitization, security headers
@@ -168,7 +169,9 @@ jenosize-trend-generator/
 6. **Safety & Reliability**: Built-in safety measures and content filtering
 
 ### Secondary Model: OpenAI GPT-3.5/GPT-4
-**Strategic Benefits:**
+> **⚠️ Note**: OpenAI integration is implemented but **not fully tested**. Current deployment focuses on Claude 3 Haiku as the primary model with mock fallback. OpenAI integration will be validated in future releases.
+
+**Strategic Benefits (When Implemented):**
 1. **Proven Performance**: Extensive validation in business content generation
 2. **API Maturity**: Stable, well-documented API with comprehensive features
 3. **Scalability**: Robust infrastructure for high-volume operations
@@ -179,14 +182,19 @@ jenosize-trend-generator/
 Content Generation Flow:
 ┌─────────────┐    ┌──────────────┐    ┌─────────────┐
 │ Claude 3    │ -> │ OpenAI GPT   │ -> │ Mock        │
-│ (Primary)   │    │ (Secondary)  │    │ (Fallback)  │
+│ (Primary)   │    │ (Untested)   │    │ (Fallback)  │
 └─────────────┘    └──────────────┘    └─────────────┘
 ```
 
+**Current Status:**
+- **Claude 3 Haiku**: ✅ Fully tested and operational
+- **OpenAI GPT**: ⚠️ Implemented but not tested - disabled in current deployment
+- **Mock Generator**: ✅ Reliable fallback for development and testing
+
 This architecture ensures:
-- **99.9% Uptime**: Always functional regardless of API availability
-- **Cost Optimization**: Smart provider selection based on requirements
-- **Quality Assurance**: Consistent output quality across all providers
+- **High Reliability**: Claude + Mock fallback provides stable operation
+- **Future Expansion**: OpenAI integration ready for testing and activation
+- **Quality Assurance**: Consistent output quality with tested providers
 
 ## 🎨 Style Matching System
 
@@ -195,6 +203,8 @@ This architecture ensures:
 - **Category Coverage**: Consumer Insights, Experience, Futurist, Marketing, Technology, Sustainability
 - **Semantic Embeddings**: Pre-computed sentence transformer vectors for instant similarity matching
 - **Dynamic Prompting**: Real-time style example selection based on content requirements
+
+> **🚀 Future Enhancement**: As the article database grows significantly, the system will migrate to **Qdrant** or other specialized vector databases for improved performance, scalability, and advanced similarity search capabilities. Current pickle-based storage is optimal for the current 68-article collection but will be upgraded for larger datasets.
 
 ### Style Matching Process
 1. **Query Analysis**: Content brief semantic embedding generation
