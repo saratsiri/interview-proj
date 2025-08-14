@@ -2,6 +2,7 @@
 import streamlit as st
 import requests
 import json
+import os
 from datetime import datetime
 
 # Page configuration
@@ -37,7 +38,7 @@ st.title("📝 Jenosize Trend Generator")
 
 # API configuration (minimal sidebar)
 with st.sidebar:
-    api_url = st.text_input("API Endpoint", value="http://localhost:8000")
+    api_url = st.text_input("API Endpoint", value=os.getenv("API_URL", "http://localhost:8000"))
     # Simple connection status
     try:
         health_response = requests.get(f"{api_url}/health", timeout=3)
