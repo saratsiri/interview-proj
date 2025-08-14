@@ -2,6 +2,8 @@
 
 ## Quick Start
 
+> **✅ Container Functionality Tested**: Multi-container setup successfully tested on macOS with Docker Desktop.
+
 1. **Clone the repository and set up environment:**
 ```bash
 git clone <repository-url>
