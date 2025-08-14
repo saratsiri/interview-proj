@@ -1,0 +1,35 @@
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: jenosize-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: ./start-api.sh
+    envVars:
+      - key: CLAUDE_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+
+  # Streamlit Frontend Service
+  - type: web
+    name: jenosize-ui
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: ./start-ui.sh
+    envVars:
+      - key: API_URL
+        fromService:
+          type: web
+          name: jenosize-api
+          property: url
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHONPATH
+        value: /opt/render/project/src

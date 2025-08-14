@@ -8,8 +8,9 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
+# Load environment variables from .env file (development only)
+if os.getenv("ENVIRONMENT") != "production":
+    load_dotenv()
 
 from src.api.schemas import ArticleRequest, ArticleResponse, ArticleMetadata
 from src.api.security import (
